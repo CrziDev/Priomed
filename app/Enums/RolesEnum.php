@@ -5,7 +5,8 @@ namespace App\Enums;
 enum RolesEnum: string 
 {
     case ADMIN = 'admin';
-
+    case PURCHASEOCCER = "purchaser-officer";
+    case COO = "COO";
 
     public static function toArray(): array
     {

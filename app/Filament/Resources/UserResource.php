@@ -27,9 +27,7 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name'),
                 Forms\Components\TextInput::make('password'),
-
                 Forms\Components\TextInput::make('email'),
-
                 Forms\Components\Select::make('role')
                     ->options(RolesEnum::toArray())
                     ->relationship('roles','name'),
