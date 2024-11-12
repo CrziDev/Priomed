@@ -18,13 +18,15 @@ class ProviderResource extends Resource
     protected static ?string $model = Provider::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Party List';
     protected static ?string $navigationGroup = 'Purchase Order';
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('provider_name')
+                Forms\Components\TextInput::make('party_name')
                     ->maxLength(100),
                 Forms\Components\TextInput::make('contact_number')
                     ->maxLength(20),

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
-            $table->string('provider_name', 100)->nullable();
+            $table->string('party_name', 100)->nullable();
             $table->string('contact_number', 20)->nullable();
             $table->string('contact_person', 50)->nullable();
             $table->string('address', 150)->nullable();
