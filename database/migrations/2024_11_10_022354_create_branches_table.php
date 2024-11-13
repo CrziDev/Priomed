@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
-            $table->string('branch_name', 100)->nullable();
+            $table->string('name', 100)->nullable();
             $table->string('address', 150)->nullable();
             $table->string('contact_person', 100)->nullable();
             $table->string('contact_number', 20)->nullable();

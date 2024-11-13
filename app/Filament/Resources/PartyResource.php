@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ProviderResource\Pages;
-use App\Filament\Resources\ProviderResource\RelationManagers;
-use App\Models\Provider;
+use App\Filament\Resources\PartyResource\Pages;
+use App\Filament\Resources\PartyResource\RelationManagers;
+use App\Models\Party;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,20 +13,17 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ProviderResource extends Resource
+class PartyResource extends Resource
 {
-    protected static ?string $model = Provider::class;
+    protected static ?string $model = Party::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationLabel = 'Party List';
-    protected static ?string $navigationGroup = 'Purchase Order';
-
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('party_name')
+                Forms\Components\TextInput::make('name')
                     ->maxLength(100),
                 Forms\Components\TextInput::make('contact_number')
                     ->maxLength(20),
@@ -43,7 +40,7 @@ class ProviderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('provider_name')
+                Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('contact_number')
                     ->searchable(),
@@ -83,9 +80,9 @@ class ProviderResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProviders::route('/'),
-            'create' => Pages\CreateProvider::route('/create'),
-            'edit' => Pages\EditProvider::route('/{record}/edit'),
+            'index' => Pages\ListParties::route('/'),
+            'create' => Pages\CreateParty::route('/create'),
+            'edit' => Pages\EditParty::route('/{record}/edit'),
         ];
     }
 }

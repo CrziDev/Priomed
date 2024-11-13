@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('name', 150)->nullable();
             $table->foreignId('category_id')->nullable()->constrained('categories');
             $table->string('description', 150)->nullable();
-            $table->string('unit', 100)->nullable();
+            $table->foreignId('unit_id')->nullable()->constrained('units');
+            $table->foreignId('generic_id')->nullable()->constrained('generics');
+            $table->foreignId('brand_id')->nullable()->constrained('brands');
             $table->timestamps();
         });
     }

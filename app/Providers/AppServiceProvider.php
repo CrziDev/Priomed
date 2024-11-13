@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,5 +23,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
+        Filament::registerNavigationGroups([
+            'Purchase Order',
+            'Inventory',
+            'Inventory Management',
+        ]);
     }
 }

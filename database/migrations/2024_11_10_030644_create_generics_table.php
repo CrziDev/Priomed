@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('generics', function (Blueprint $table) {
             $table->id();
-            $table->string('generic_name', 50)->nullable();
+            $table->string('name', 50)->nullable();
             $table->string('description')->nullable();
             $table->string('manufacturer', 100)->nullable();
             $table->timestamps();

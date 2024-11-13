@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Unit extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    
 
 
-    public static function getOptionsNameArray($html = false): array
+    public static function getOptionArray($html = false): array
     {
         //Display
         $items = self::all();

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Branches extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    
     
      //___________ Functions ___________ //
 

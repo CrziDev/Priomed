@@ -4,7 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SupplyResource\Pages;
 use App\Filament\Resources\SupplyResource\RelationManagers;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Generic;
 use App\Models\Supply;
 use App\Models\Unit;
 use Filament\Forms;
@@ -20,6 +22,8 @@ class SupplyResource extends Resource
 {
     protected static ?string $model = Supply::class;
     protected static ?string $navigationGroup = 'Inventory Management';
+    protected static ?int $navigationSort = 1;
+
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -28,20 +32,41 @@ class SupplyResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->maxLength(150),
-                Forms\Components\Select::make('category_id')
-                    ->options(Category::getOptionsNameArray(false))
-                    ->native(false)
-                    ->preload()
-                    ->searchable(),
-                Forms\Components\TextInput::make('description')
-                    ->maxLength(150),
-                Forms\Components\Select::make('unit_id')
-                    ->options(Unit::getOptionsNameArray(false))
-                    ->native(false)
-                    ->preload()
-                    ->searchable(),
-            ]);
+                    ->columnSpanFull(),
+                Forms\Components\Fieldset::make('Supply Information')
+                    ->hiddenLabel()
+                    ->schema([
+                        Forms\Components\Select::make('category_id')
+                            ->options(Category::getOptionArray(false))
+                            ->native(false)
+                            ->label('Category')
+                            ->preload()
+                            ->searchable(),
+                        Forms\Components\Select::make('unit_id')
+                            ->options(Unit::getOptionArray(false))
+                            ->native(false)
+                            ->preload()
+                            ->label('Unit')
+                            ->searchable(),
+                        Forms\Components\Select::make('generic_id')
+                            ->options(Generic::getOptionArray(false))
+                            ->native(false)
+                            ->preload()
+                            ->label('Generic')
+                            ->searchable(),
+                        Forms\Components\Select::make('brand_id')
+                            ->options(Brand::getOptionArray(false))
+                            ->native(false)
+                            ->preload()
+                            ->label('Brand')
+                            ->searchable(),
+                    ])->columns(2),
+                Forms\Components\Textarea::make('description')
+                    ->rows(5)
+                    ->cols(8)
+                    ->columnSpanFull()
+                    ->autosize(),
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table
